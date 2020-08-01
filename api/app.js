@@ -1,13 +1,13 @@
 const createError = require('http-errors');
 const express = require('express');
 const httpContext = require('express-http-context');
-const path = require('path');
 const cookieParser = require('cookie-parser');
 
 const { requestReceived } = require('./middlewares/requestReceived');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const logger = require('./config/logger');
 
 const app = express();
 
@@ -31,6 +31,8 @@ app.use(function (req, res, next) {
 
 // error handler
 app.use(function (err, req, res, next) {
+  logger.error(err.message);
+
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
