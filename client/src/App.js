@@ -1,16 +1,25 @@
 import React, { Component } from 'react';
 import './App.css';
 
+import { trackPromise } from 'react-promise-tracker';
+
+// https://github.com/Lemoncode/react-promise-tracker
+// https://www.basefactor.com/react-how-to-display-a-loading-indicator-on-fetch-calls
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = { apiResponse: '' };
+
+    this.callAPI = this.callAPI.bind(this);
   }
 
   async callAPI() {
-    const res = await fetch('http://localhost:4000/', {
-      method: 'GET',
-    });
+    const res = await trackPromise(
+      fetch('http://localhost:4000/api/v1/users', {
+        method: 'GET',
+      })
+    );
 
     this.setState({ apiResponse: JSON.stringify(await res.json()) });
   }
