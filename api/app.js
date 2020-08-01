@@ -1,5 +1,6 @@
 const createError = require('http-errors');
 const express = require('express');
+const expressWinston = require('express-winston');
 const httpContext = require('express-http-context');
 const cookieParser = require('cookie-parser');
 
@@ -14,22 +15,29 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-// app.use(express.static(path.join(__dirname, 'public')));
 
 // Received request
 app.use(httpContext.middleware);
 app.use(requestReceived);
 
+// Logger for finished requests
+app.use(
+  expressWinston.logger({
+    winstonInstance: logger,
+    msg: '{{req.method}} {{req.url}} {{res.statusCode}} - {{res.responseTime}}ms',
+  })
+);
+
 // Routes
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
-// catch 404 and forward to error handler
+// Catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
 });
 
-// error handler
+// Error handler
 app.use(function (err, req, res, next) {
   logger.error(err.message);
 
