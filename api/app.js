@@ -1,4 +1,5 @@
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
 const createError = require('http-errors');
 const express = require('express');
 const expressWinston = require('express-winston');
@@ -11,6 +12,8 @@ const indexRouter = require('./routes/index');
 const v1Router = require('./routes/v1/index');
 
 const app = express();
+
+app.use(cors());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
