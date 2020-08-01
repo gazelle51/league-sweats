@@ -1,14 +1,14 @@
+const cookieParser = require('cookie-parser');
 const createError = require('http-errors');
 const express = require('express');
 const expressWinston = require('express-winston');
 const httpContext = require('express-http-context');
-const cookieParser = require('cookie-parser');
+const logger = require('./config/logger');
 
 const { requestReceived } = require('./middlewares/requestReceived');
 
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
-const logger = require('./config/logger');
+const v1Router = require('./routes/v1/index');
 
 const app = express();
 
@@ -30,7 +30,7 @@ app.use(
 
 // Routes
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/api/v1', v1Router);
 
 // Catch 404 and forward to error handler
 app.use(function (req, res, next) {
