@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { LoadingSpinner } from './components/LoadingSpinner';
 import './App.css';
 
 import { trackPromise } from 'react-promise-tracker';
@@ -18,7 +19,8 @@ class App extends Component {
     const res = await trackPromise(
       fetch('http://localhost:4000/api/v1/users', {
         method: 'GET',
-      })
+      }),
+      'apiResponse-area'
     );
 
     this.setState({ apiResponse: JSON.stringify(await res.json()) });
@@ -32,7 +34,7 @@ class App extends Component {
     return (
       <div className='App'>
         <header className='App-header'>
-          <p>This is the League Sweats page.</p>
+          <p>This is the League Sweats page</p>
           <a
             className='App-link'
             href='https://reactjs.org'
@@ -41,9 +43,11 @@ class App extends Component {
           >
             Learn React
           </a>
-          <p>
-            The response from the API is: <code>{this.state.apiResponse}</code>
-          </p>
+
+          <div>
+            The response from the API is: <LoadingSpinner area='apiResponse-area' />
+            <code>{this.state.apiResponse}</code>
+          </div>
         </header>
       </div>
     );
