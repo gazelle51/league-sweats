@@ -14,7 +14,7 @@ class App extends Component {
 
   async callAPI() {
     const res = await trackPromise(
-      fetch('http://localhost:4000/api/v1/users', {
+      fetch(`${process.env.REACT_APP_BACKEND_API_URL}/users`, {
         method: 'GET',
       }),
       'apiResponse-area'
