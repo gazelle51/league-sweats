@@ -1,4 +1,8 @@
+# Riot Games API
+RG_API_URL=https://oc1.api.riotgames.com
 RG_API_KEY=
+
+# Players' PUUIDs
 PLAYER_1_PUUID=
 PLAYER_2_PUUID=
 PLAYER_3_PUUID=
