@@ -1,6 +1,7 @@
 # Riot Games API
 RG_API_URL=https://oc1.api.riotgames.com
 RG_API_KEY=
+DDRAGON_API_URL=http://ddragon.leagueoflegends.com/cdn/10.15.1
 
 # Players' PUUIDs
 PLAYER_1_PUUID=

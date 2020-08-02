@@ -11,14 +11,8 @@ router.get('/', async function (req, res, next) {
 
   try {
     const summoners = await Promise.all(
-      playerPuuids.map(async (puuid) => {
-        const data = await summonerApi.byPuuid(puuid);
-        return data;
-      })
+      playerPuuids.map(async (puuid) => await summonerApi.byPuuid(puuid))
     );
-
-    // let data = await kayn.DDragon.ProfileIcon.list();
-    // console.log(data);
 
     res.status(200).json({ status: 200, data: { message: 'team', summoners, profileIcons: [] } });
   } catch (err) {
