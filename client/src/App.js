@@ -4,9 +4,6 @@ import './App.css';
 
 import { trackPromise } from 'react-promise-tracker';
 
-// https://github.com/Lemoncode/react-promise-tracker
-// https://www.basefactor.com/react-how-to-display-a-loading-indicator-on-fetch-calls
-
 class App extends Component {
   constructor(props) {
     super(props);
