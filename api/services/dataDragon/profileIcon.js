@@ -28,4 +28,12 @@ async function png(id) {
   }
 }
 
-module.exports = { all, png };
+/**
+ * Get the URL for a summoner icon PNG by it's ID.
+ * @param {string} id
+ */
+function pngUrl(id) {
+  return `${process.env.DDRAGON_API_URL}/img/profileicon/${id}.png`;
+}
+
+module.exports = { all, png, pngUrl };
