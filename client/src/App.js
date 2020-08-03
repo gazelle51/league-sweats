@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { LoadingSpinner } from './components/LoadingSpinner';
+import { PlayerCard } from './components/PlayerCard';
 import './App.css';
 
 import { trackPromise } from 'react-promise-tracker';
@@ -45,6 +46,12 @@ class App extends Component {
             The response from the API is: <LoadingSpinner area='apiResponse-area' />
             <code>{this.state.apiResponse}</code>
           </div>
+
+          <PlayerCard
+            summonerName='gazelle51'
+            summonerLevel='94'
+            profileIconUrl='http://ddragon.leagueoflegends.com/cdn/10.15.1/img/profileicon/4570.png'
+          />
         </header>
       </div>
     );

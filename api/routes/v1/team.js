@@ -23,7 +23,7 @@ router.get('/', async function (req, res, next) {
 
     // Get profile icon URLs
     summoners.forEach((summoner) => {
-      summoner.profileIcon = profileIconApi.pngUrl(summoner.profileIconId);
+      summoner.profileIconUrl = profileIconApi.pngUrl(summoner.profileIconId);
     });
 
     res.status(200).json({ status: 200, data: { summoners } });
