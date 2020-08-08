@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Image from 'react-bootstrap/Image';
@@ -14,14 +15,16 @@ import Row from 'react-bootstrap/Row';
  */
 export const PlayerCard = (props) => {
   return (
-    <Container>
+    <Card style={{ width: '25rem' }}>
       <Row>
-        <Col>
+        <Col xs={4}>
           <Image src={props.profileIconUrl} roundedCircle width='100' />
         </Col>
-        <Col>{props.summonerName}</Col>
-        <Col>{props.summonerLevel}</Col>
+        <Col>
+          <Card.Header>{props.summonerName}</Card.Header>
+          <Card.Text>{props.summonerLevel}</Card.Text>
+        </Col>
       </Row>
-    </Container>
+    </Card>
   );
 };
